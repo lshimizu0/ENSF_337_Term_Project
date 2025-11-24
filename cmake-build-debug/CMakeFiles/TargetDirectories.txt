@@ -1,0 +1,3 @@
+C:/Users/lupsh/CLionProjects/ENSF337/Term_Project/cmake-build-debug/CMakeFiles/Term_Project.dir
+C:/Users/lupsh/CLionProjects/ENSF337/Term_Project/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/lupsh/CLionProjects/ENSF337/Term_Project/cmake-build-debug/CMakeFiles/rebuild_cache.dir
