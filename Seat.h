@@ -8,7 +8,15 @@
 
 
 class Seat {
+    
+    Seat();
+    Seat(int row, char seat);
 
+    int getRowNumber() const;
+    char getSeatCharacter() const;
+
+    void setRowNumber(int row);
+    void setSeatCharacter(char seat);
 };
 
 
