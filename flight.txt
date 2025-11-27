@@ -1,0 +1,5 @@
+AC101 Calgary Vancouver 20 6
+WS202 Toronto Calgary 25 6
+DL303 Edmonton Winnipeg 18 4
+UA404 Vancouver Calgary 22 6
+AC505 Montreal Calgary 24 6

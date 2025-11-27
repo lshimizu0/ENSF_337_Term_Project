@@ -8,6 +8,7 @@
 
 #include "Passenger.h"
 #include "Route.h"
+#include "Seat.h"
 
 using namespace std;
 
@@ -15,16 +16,16 @@ class Flight {
 private:
     string flight_id;
     Route route;
-    int seats;
+    Seat **seats;
     vector<Passenger> passengers;
     int number_of_rows;
     int number_of_seats_per_row;
 
 
     public:
-    Flight(string flight_id, Route route, int number_of_rows, int number_of_seats_per_row);
+    Flight(string flight_id, string source, string dest, int number_of_rows, int number_of_seats_per_row);
 
-    bool in_passengers(Passenger passenger);
+
     int get_number_of_rows() {
         return number_of_rows;
     };
@@ -40,8 +41,15 @@ private:
     string get_flight_id() {
         return flight_id;
     }
-    void addPassenger(Passenger passenger);
+    Seat *get_seat(int row, char col) {
+        return &seats[row][col-65];
+    };
+    bool in_passengers(Passenger passenger);
+    void addPassenger(Passenger passenger) {
+        passengers.push_back(passenger);
+    };
     void deletePassenger(int passenger_number);
+    void printSeatMap();
 };
 
 

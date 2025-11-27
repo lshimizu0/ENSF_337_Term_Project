@@ -1,6 +1,7 @@
 #include <iostream>
-#include <vector>
+#include <iomanip>
 
+#include "File_Reader.h"
 #include "Flight.h"
 
 
@@ -8,73 +9,180 @@ using namespace std;
 int main()
 {
     //Read From file here
-    vector<Flight> flights;
-    flights.push_back( Flight("AC101", Route("Calgary", "Vancouver"), 20, 6) );
-    flights.push_back( Flight("AC202", Route("Calgary", "Toronto"), 25, 6) );
-    flights.push_back( Flight("WS303", Route("Edmonton", "Calgary"), 15, 4) );
-    flights.push_back( Flight("WS404", Route("Vancouver", "Edmonton"), 18, 5) );
-    flights.push_back( Flight("DL505", Route("Seattle", "Calgary"), 22, 6) );
-    flights.push_back( Flight("UA606", Route("Denver", "Calgary"), 24, 6) );
-    flights.push_back( Flight("AA707", Route("Chicago", "Calgary"), 21, 6) );
-    flights.push_back( Flight("AC808", Route("Montreal", "Calgary"), 28, 6) );
-    flights.push_back( Flight("WS909", Route("Winnipeg", "Calgary"), 16, 4) );
-    flights.push_back( Flight("AC010", Route("Calgary", "Halifax"), 26, 6) );
 
-
+    vector<Flight> flights = read_flights_from_file("flight.txt");
+    vector<Passenger> passengers = read_passengers_from_file("passengers.txt", flights);
 
 
 
     //User Interface
-    cout<<"FMAS Version 1.0\n"
-          "Term Project - Flight Management Application System\n"
-          "Produced by group#: 9\n"
-          "Names: Lucas Shimizu, Eric Hallett, Nnamdi Onaga\n\n "
-          "<<<Press Return to Continue>>>";
-    cin.get();
+     cout<<"FMAS Version 1.0\n"
+           "Term Project - Flight Management Application System\n"
+           "Produced by group#: 9\n"
+           "Names: Lucas Shimizu, Eric Hallett, Nnamdi Onaga\n\n "
+           "<<<Press Return to Continue>>>";
+     cin.get();
 
-    int choice;
-    cout<<"Please select one of the following options\n"
-          "1. Select a flight\n"
-          "2. Display Flight Seat Map\n"
-          "3. Display Passengers Information\n"
-          "4. Add a New Passenger\n"
-          "5. Remove an Existing Passenger\n"
-          "6. Save Data\n"
-          "7. Quit\n"
-          "Enter your choice(1-7): ";
-    cin>>choice;
-    switch(choice) {
-        case 1:
-            cout<<"Here is the list of available flights. Please select one:\n";
+    while (true){
+        int choice;
+        cout<<"\nPlease select one of the following options\n"
+              "1. Select a flight\n"
+              "2. Display Flight Seat Map\n"
+              "3. Display Passengers Information\n"
+              "4. Add a New Passenger\n"
+              "5. Remove an Existing Passenger\n"
+              "6. Save Data\n"
+              "7. Quit\n"
+              "Enter your choice(1-7): ";
+        cin>>choice;
+        switch(choice) {
+            case 1:
+                cout<<"Here is the list of available flights. Please select one:\n";
+                for(int i=0;i<flights.size();i++) {
+                    cout<<i+1<<". "<<flights.at(i).get_flight_id()<<" "<<flights.at(i).get_route().getSource()<<" "<<flights.at(i).get_route().getDestination()<<" "<<flights.at(i).get_number_of_rows()<<" "<<flights.at(i).get_number_of_seats_per_row()<<endl;
+                }
+                cout<<"Enter your choice: ";
+                cin >> choice;
+                choice--;
+                cout<<"You have selected flight "<<flights.at(choice).get_flight_id()<<" from "<<flights.at(choice).get_route().getSource()<<" to "<<flights.at(choice).get_route().getDestination()<<endl;
+                cout<<"\n<<<Press Return to continue>>>";
+                break;
+            case 2:
+                cout<<"Here is the list of available flights. Please select one:\n";
             for(int i=0;i<flights.size();i++) {
                 cout<<i+1<<". "<<flights.at(i).get_flight_id()<<" "<<flights.at(i).get_route().getSource()<<" "<<flights.at(i).get_route().getDestination()<<" "<<flights.at(i).get_number_of_rows()<<" "<<flights.at(i).get_number_of_seats_per_row()<<endl;
             }
             cout<<"Enter your choice: ";
             cin >> choice;
             choice--;
-            cout<<"You have selected flight "<<flights.at(choice).get_flight_id()<<" from "<<flights.at(choice).get_route().getSource()<<" to "<<flights.at(choice).get_route().getDestination()<<endl;
-            cout<<"\n<<<Press Return to continue>>>";
+            flights.at(choice).printSeatMap();
             break;
-        case 2:
-            cout<<"Case 2";
-            break;
-        case 3:
-            cout<<"Case 3";
-            break;
-        case 4:
-            cout<<"Case 4";
-            break;
-        case 5:
-            cout<<"Case 5";
-            break;
-        case 6:
-            cout<<"Case 6";
-            break;
-        case 7:
-            cout<<"Case 7";
-            break;
+            case 3: {
+                cout<<"Here is the list of available flights. Please select one:\n";
+                for(int i=0;i<flights.size();i++) {
+                    cout<<i+1<<". "<<flights.at(i).get_flight_id()<<" "<<flights.at(i).get_route().getSource()<<" "<<flights.at(i).get_route().getDestination()<<" "<<flights.at(i).get_number_of_rows()<<" "<<flights.at(i).get_number_of_seats_per_row()<<endl;
+                }
+                cout<<"Enter your choice: ";
+                cin >> choice;
+                choice--;
+                vector<Passenger> passengers_choice = flights.at(choice).get_passengers();
+                cout << left
+                     << setw(12) << "First Name"
+                     << setw(12) << "Last Name"
+                     << setw(15) << "Phone"
+                     << setw(6)  << "Row"
+                     << setw(6)  << "Seat"
+                     << setw(10) << "ID"
+                     << endl;
+
+                cout << "-------------------------------------------------------------" << endl;
+
+                for (int i = 0; i < passengers_choice.size(); i++) {
+                    cout << left
+                         << setw(12) << passengers_choice.at(i).get_first_name()
+                         << setw(12) << passengers_choice.at(i).get_last_name()
+                         << setw(15) << passengers_choice.at(i).get_phone_number()
+                         << setw(6)  << passengers_choice.at(i).get_seat()->get_row_number()
+                         << setw(6)  << passengers_choice.at(i).get_seat()->get_seat_character()
+                         << setw(10) << passengers_choice.at(i).get_id()
+                         << endl;
+                }
+                break;
+            }
+            case 4: {
+                string fname;
+                string lname;
+                string phone_number;
+                int id;
+                string plane_id;
+                int row;
+                char row_char;
+                cout<<"Please enter the passenger first name: ";
+                cin>>fname;
+                cout<<"Please enter the passenger last name: ";
+                cin>>lname;
+                cout<<"Please enter the passenger phone number(###-###-####): ";
+                cin>>phone_number;
+                cout<<"Please enter the passenger id: ";
+                cin>>id;
+                cout<<"Please enter plane id: ";
+                cin>>plane_id;
+                cout<<"Please enter row number: ";
+                cin>>row;
+                cout<<"Please enter desired seat: ";
+                cin>>row_char;
+                Passenger passenger(fname, lname, phone_number, id, plane_id);
+                for(int i=0;i<flights.size();i++) {
+                    if(flights.at(i).get_flight_id() == plane_id) {
+                        flights.at(i).get_seat(row, row_char)->set_assigned(true);
+                        passenger.set_seat(flights.at(i).get_seat(row, row_char));
+                        flights.at(i).addPassenger(passenger);
+                    }
+                }
+
+                passengers.push_back(passenger);
+                break;
+                }
+            case 5: {
+                int id;
+                cout<<"Enter passenger id: ";
+                cin>>id;
+                for(int i=0;i<passengers.size();i++) {
+                    if(passengers[i].get_id() == id) {
+                        passengers[i].get_seat()->set_assigned(false);
+                        for(int j=0;j<flights.size();j++) {
+                            if(flights[j].get_flight_id() == passengers[i].get_flight_id()) {
+                                flights[j].deletePassenger(id);
+                                break;
+                            }
+                        }
+                        passengers.erase(passengers.begin() + i);
+                        break;
+                    }
+                }
+                cout<<"Passenger id \""<<id<<"\" removed.";
+                break;
+            }
+
+            case 6: {
+                char chat;
+                cout<<"Do you want to save the data in the \"flight_info.txt\" file? (y or n): ";
+                cin>>chat;
+                if(tolower(chat) != 'y') {
+                    cout<<"Ok, Not saving";
+                    break;
+                }
+                ofstream out("flight_info.txt");
+
+                if (!out.is_open()) {
+                    cout << "Error opening flight_info.txt\n";
+                    break;
+                }
+
+
+                for (int i = 0; i < passengers.size(); i++) {
+                    out << passengers[i].get_flight_id() << " "
+                        << passengers[i].get_first_name() << " "
+                        << passengers[i].get_last_name() << " "
+                        << passengers[i].get_phone_number() << " "
+                        << passengers[i].get_seat()->get_row_number()
+                        << passengers[i].get_seat()->get_seat_character() << " "
+                        << passengers[i].get_id();
+
+                    if (i < passengers.size() - 1)
+                        out << endl;
+                }
+
+                out.close();
+                cout << "Data saved into flight_info.txt\n";
+                break;
+            }
+
+
+            case 7:
+                cout<<"Goodbye\n";
+                exit(0);
+
+        }
     }
-
-
-    return 0;
 }

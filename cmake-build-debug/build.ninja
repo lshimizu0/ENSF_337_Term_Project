@@ -85,6 +85,12 @@ build CMakeFiles/Term_Project.dir/Route.cpp.obj: CXX_COMPILER__Term_Project_unsc
   OBJECT_DIR = CMakeFiles\Term_Project.dir
   OBJECT_FILE_DIR = CMakeFiles\Term_Project.dir
 
+build CMakeFiles/Term_Project.dir/File_Reader.cpp.obj: CXX_COMPILER__Term_Project_unscanned_Debug C$:/Users/lupsh/CLionProjects/ENSF337/Term_Project/File_Reader.cpp || cmake_object_order_depends_target_Term_Project
+  DEP_FILE = CMakeFiles\Term_Project.dir\File_Reader.cpp.obj.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\Term_Project.dir
+  OBJECT_FILE_DIR = CMakeFiles\Term_Project.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Term_Project
@@ -93,7 +99,7 @@ build CMakeFiles/Term_Project.dir/Route.cpp.obj: CXX_COMPILER__Term_Project_unsc
 #############################################
 # Link the executable Term_Project.exe
 
-build Term_Project.exe: CXX_EXECUTABLE_LINKER__Term_Project_Debug CMakeFiles/Term_Project.dir/main.cpp.obj CMakeFiles/Term_Project.dir/Flight.cpp.obj CMakeFiles/Term_Project.dir/Passenger.cpp.obj CMakeFiles/Term_Project.dir/Seat.cpp.obj CMakeFiles/Term_Project.dir/Airline.cpp.obj CMakeFiles/Term_Project.dir/Route.cpp.obj
+build Term_Project.exe: CXX_EXECUTABLE_LINKER__Term_Project_Debug CMakeFiles/Term_Project.dir/main.cpp.obj CMakeFiles/Term_Project.dir/Flight.cpp.obj CMakeFiles/Term_Project.dir/Passenger.cpp.obj CMakeFiles/Term_Project.dir/Seat.cpp.obj CMakeFiles/Term_Project.dir/Airline.cpp.obj CMakeFiles/Term_Project.dir/Route.cpp.obj CMakeFiles/Term_Project.dir/File_Reader.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Term_Project.dir

@@ -24,6 +24,12 @@ public:
     string getDestination() {
         return destination;
     }
+    void setSource(string source) {
+        this->source = source;
+    }
+    void setDestination(string destination) {
+        this->destination = destination;
+    }
     private:
     string source;
     string destination;
