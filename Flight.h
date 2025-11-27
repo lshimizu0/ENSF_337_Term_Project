@@ -5,6 +5,7 @@
 #ifndef FLIGHT_H
 #define FLIGHT_H
 #include <vector>
+#include <iostream>
 
 #include "Passenger.h"
 #include "Route.h"
@@ -42,6 +43,10 @@ private:
         return flight_id;
     }
     Seat *get_seat(int row, char col) {
+        if(row < 0 || row > number_of_rows || col-65 < 0 || col-65 > number_of_seats_per_row) {
+            cout<<"ERROR in getting seat\nOut of bounds\nEXITING";
+            exit(1);
+        }
         return &seats[row][col-65];
     };
     bool in_passengers(Passenger passenger);

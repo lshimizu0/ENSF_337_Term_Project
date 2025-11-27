@@ -97,6 +97,8 @@ int main()
                 string plane_id;
                 int row;
                 char row_char;
+                //USER PROOFING
+                bool abort = false;
                 cout<<"Please enter the passenger first name: ";
                 cin>>fname;
                 cout<<"Please enter the passenger last name: ";
@@ -113,22 +115,33 @@ int main()
                 cin>>row_char;
                 Passenger passenger(fname, lname, phone_number, id, plane_id);
                 for(int i=0;i<flights.size();i++) {
-                    if(flights.at(i).get_flight_id() == plane_id) {
+                    if(flights.at(i).get_flight_id() == plane_id && flights.at(i).get_seat(row, row_char)->get_assigned()==false) {
+                        if(row>flights[i].get_number_of_rows() || row<0 || row_char>flights[i].get_number_of_seats_per_row()+65 || row_char<65) {
+                            abort = true;
+                        }
                         flights.at(i).get_seat(row, row_char)->set_assigned(true);
                         passenger.set_seat(flights.at(i).get_seat(row, row_char));
                         flights.at(i).addPassenger(passenger);
+                    }else if(flights.at(i).get_seat(row, row_char)->get_assigned()==true && flights.at(i).get_flight_id() == plane_id) {
+                        abort = true;
+                        break;
                     }
                 }
-
+                if(abort) {
+                    cout<<"COMMAND FAILED!\nINPUT ERROR!\nABORTING.."<<endl;
+                    break;
+                }
                 passengers.push_back(passenger);
                 break;
                 }
             case 5: {
                 int id;
+                bool abort = true;
                 cout<<"Enter passenger id: ";
                 cin>>id;
                 for(int i=0;i<passengers.size();i++) {
                     if(passengers[i].get_id() == id) {
+                        abort = false;
                         passengers[i].get_seat()->set_assigned(false);
                         for(int j=0;j<flights.size();j++) {
                             if(flights[j].get_flight_id() == passengers[i].get_flight_id()) {
@@ -139,6 +152,10 @@ int main()
                         passengers.erase(passengers.begin() + i);
                         break;
                     }
+                }
+                if(abort) {
+                    cout<<"Passenger not found"<<endl;
+                    break;
                 }
                 cout<<"Passenger id \""<<id<<"\" removed.";
                 break;
