@@ -17,7 +17,7 @@ Flight::Flight(string flight_id, Route route, int number_of_rows, int number_of_
 
 
 bool Flight::in_passengers(Passenger passenger) {
-    for(int i=0; i <passengers.size();i++) {
+    for(int i=0; i <passengers.size(); i++) {
         if(passengers[i].get_phone_number() == passenger.get_phone_number()) {
             return true;
         }

@@ -1,7 +1,11 @@
-
+//
+// Created by Nnamdi on 2025-11-28.
+//
 
 #include <iostream>
 #include "Airline.h"
+#include "Flight.h"
+#include <vector>
 
 Airline::Airline(string name, vector<Flight> flights)
 {
@@ -11,7 +15,7 @@ Airline::Airline(string name, vector<Flight> flights)
 
 bool Airline::in_flights()
 {
-    // Implementation needed
+
     if (flights.size() > 0)
     {
         return true;
