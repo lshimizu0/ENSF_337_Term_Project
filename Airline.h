@@ -8,17 +8,18 @@
 
 #include "Flight.h"
 
+using namespace std;
 
-class Airline {
-    public:
-    Airline();
+class Airline
+{
+public:
+    Airline(string name, vector<Flight> flights);
     bool in_flights();
     void addFlight(Flight flight);
+
 private:
     vector<Flight> flights;
     string name;
 };
 
-
-
-#endif //AIRLINE_H
+#endif // AIRLINE_H
