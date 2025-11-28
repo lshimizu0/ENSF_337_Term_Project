@@ -1,5 +1,6 @@
 //
-// Created by lupsh on 2025-11-24.
+// Class defined passenger stores passenger information
+// like what flight and seat they are assigned to and personal information
 //
 
 #ifndef PASSENGER_H

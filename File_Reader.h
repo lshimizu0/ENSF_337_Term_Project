@@ -1,5 +1,5 @@
 //
-// Created by lupsh on 2025-11-26.
+// Reads from inputed file and outputs a vector with all objects specified in file stored
 //
 
 #ifndef FILE_READER_H

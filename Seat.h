@@ -1,5 +1,5 @@
 //
-// Created by lupsh on 2025-11-24.
+// Class stores information for seat
 //
 
 #ifndef SEAT_H

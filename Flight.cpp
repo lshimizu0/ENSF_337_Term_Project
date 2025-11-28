@@ -1,6 +1,3 @@
-//
-// Created by lupsh on 2025-11-24.
-//
 #include <iostream>
 #include "Flight.h"
 #include "Passenger.h"

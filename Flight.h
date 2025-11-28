@@ -1,5 +1,5 @@
 //
-// Created by lupsh on 2025-11-24.
+// Class stores flight information
 //
 
 #ifndef FLIGHT_H
