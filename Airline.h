@@ -11,8 +11,9 @@
 
 class Airline {
     public:
-    Airline();
-    bool in_flights();
+    Airline(string name) {
+        this->name = name;
+    };
     void addFlight(Flight flight);
 private:
     vector<Flight> flights;

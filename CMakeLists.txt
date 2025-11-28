@@ -13,4 +13,7 @@ add_executable(Term_Project main.cpp
         Airline.cpp
         Airline.h
         Route.cpp
-        Route.h)
+        Route.h
+        File_Reader.cpp
+        File_Reader.h
+)
