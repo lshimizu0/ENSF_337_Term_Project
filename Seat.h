@@ -8,37 +8,15 @@
 
 
 class Seat {
-public:
-    Seat(int seatNumber, char seat_character);
-    Seat() {
-        row_number = 0;
-        seat_character = ' ';
-        assigned = false;
-    };
-    void set_row_number(int row_number) {
-        this->row_number = row_number;
-    };
-    void set_seat_character(char seat_character) {
-        this->seat_character = seat_character;
-    }
-    void set_assigned(bool assigned) {
-        this->assigned = assigned;
-    }
-    int get_row_number() {
-        return row_number;
-    };
-    char get_seat_character() {
-        return seat_character;
-    }
-    bool get_assigned() {
-        return assigned;
-    }
+    
+    Seat();
+    Seat(int row, char seat);
 
+    int getRowNumber() const;
+    char getSeatCharacter() const;
 
-    private:
-    int row_number;
-    char seat_character;
-    bool assigned;
+    void setRowNumber(int row);
+    void setSeatCharacter(char seat);
 };
 
 
