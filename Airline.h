@@ -16,6 +16,14 @@ public:
     Airline(string name, vector<Flight> flights);
     bool in_flights();
     void addFlight(Flight flight);
+    string get_name()
+    {
+        return name;
+    };
+    bool get_flights()
+    {
+        return flights.size() > 0;
+    };
 
 private:
     vector<Flight> flights;
