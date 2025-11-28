@@ -6,7 +6,9 @@
 
 #include <iostream>
 
-vector<Flight> read_flights_from_file(string file_name) {
+
+
+vector<Flight> read_flights_from_file(string file_name, Airline &airline) {
     vector<Flight> flights;
 
     ifstream in(file_name);
@@ -25,6 +27,7 @@ vector<Flight> read_flights_from_file(string file_name) {
     while (in >> flight_id >> source >> dest >> rows >> seats_per_row) {
         Flight flight(flight_id, source, dest, rows, seats_per_row);
         flights.push_back(flight);
+        airline.addFlight(flight);
     }
 
     return flights;

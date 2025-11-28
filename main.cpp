@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 
+#include "Airline.h"
 #include "File_Reader.h"
 #include "Flight.h"
 
@@ -9,8 +10,8 @@ using namespace std;
 int main()
 {
     //Read From file here
-
-    vector<Flight> flights = read_flights_from_file("flight.txt");
+    Airline airline("Westjet");
+    vector<Flight> flights = read_flights_from_file("flight.txt", airline);
     vector<Passenger> passengers = read_passengers_from_file("passengers.txt", flights);
 
 
@@ -43,9 +44,15 @@ int main()
                 }
                 cout<<"Enter your choice: ";
                 cin >> choice;
+                if(choice> flights.size() || choice < 1) {
+                    cout<<"Invalid Input"<<endl;
+                    break;
+                }
                 choice--;
+
                 cout<<"You have selected flight "<<flights.at(choice).get_flight_id()<<" from "<<flights.at(choice).get_route().getSource()<<" to "<<flights.at(choice).get_route().getDestination()<<endl;
                 cout<<"\n<<<Press Return to continue>>>";
+
                 break;
             case 2:
                 cout<<"Here is the list of available flights. Please select one:\n";
@@ -54,7 +61,12 @@ int main()
             }
             cout<<"Enter your choice: ";
             cin >> choice;
+            if(choice> flights.size() || choice < 1) {
+                cout<<"Invalid Input"<<endl;
+                break;
+            }
             choice--;
+
             flights.at(choice).printSeatMap();
             break;
             case 3: {
@@ -64,6 +76,10 @@ int main()
                 }
                 cout<<"Enter your choice: ";
                 cin >> choice;
+                if(choice> flights.size() || choice < 1) {
+                    cout<<"Invalid Input"<<endl;
+                    break;
+                }
                 choice--;
                 vector<Passenger> passengers_choice = flights.at(choice).get_passengers();
                 cout << left
@@ -199,6 +215,9 @@ int main()
             case 7:
                 cout<<"Goodbye\n";
                 exit(0);
+            default:
+                cout<<"Invalid Input\nTerminating"<<endl;
+                exit(1);
 
         }
     }
