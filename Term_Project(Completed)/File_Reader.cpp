@@ -1,10 +1,9 @@
-//Filename: File_Reader.cpp
+// Filename: File_Reader.cpp
+// Purpose: Implement functions that read flight and passenger data from the text files
+//          and populate program structures.
 
 #include "File_Reader.h"
-
 #include <iostream>
-
-
 
 vector<Flight> read_flights_from_file(string file_name, Airline &airline) {
     vector<Flight> flights;

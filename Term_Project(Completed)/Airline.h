@@ -1,6 +1,6 @@
 // Filename: Airline.h
-// Class stores airline information such as name and what flights are assigned to this airline
-//
+// Purpose: Declare the Airline class, which stores the airline name and
+// its collection of flights.
 
 #ifndef AIRLINE_H
 #define AIRLINE_H
@@ -10,9 +10,15 @@
 
 class Airline {
     public:
+    // Constructor
+    // REQUIRES: name = name of the airline
+    // PROMISES: Initialize an Airline object with a given name.
     Airline(string name) {
         this->name = name;
     };
+    // Function
+    // REQUIRES: flight = a Flight to append to the internal flights vector
+    // PROMISES: Add a Flight object to the airline's list of flights.
     void addFlight(Flight flight);
 private:
     vector<Flight> flights;
