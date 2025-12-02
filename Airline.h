@@ -1,11 +1,10 @@
-//
+// Filename: Airline.h
 // Class stores airline information such as name and what flights are assigned to this airline
 //
 
 #ifndef AIRLINE_H
 #define AIRLINE_H
 #include <vector>
-
 #include "Flight.h"
 
 

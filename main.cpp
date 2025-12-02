@@ -1,3 +1,5 @@
+// Filename: main.cpp
+
 #include <iostream>
 #include <iomanip>
 
@@ -134,6 +136,7 @@ int main()
                     if(flights.at(i).get_flight_id() == plane_id && flights.at(i).get_seat(row, row_char)->get_assigned()==false) {
                         if(row>flights[i].get_number_of_rows() || row<0 || row_char>flights[i].get_number_of_seats_per_row()+65 || row_char<65) {
                             abort = true;
+                            break;
                         }
                         flights.at(i).get_seat(row, row_char)->set_assigned(true);
                         passenger.set_seat(flights.at(i).get_seat(row, row_char));
