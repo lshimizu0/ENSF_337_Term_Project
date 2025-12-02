@@ -1,7 +1,3 @@
-//
-// Created by lupsh on 2025-11-26.
-//
-
 #include "File_Reader.h"
 
 #include <iostream>

@@ -1,5 +1,5 @@
 //
-// Created by lupsh on 2025-11-24.
+// Class stores airline information such as name and what flights are assigned to this airline
 //
 
 #ifndef AIRLINE_H
