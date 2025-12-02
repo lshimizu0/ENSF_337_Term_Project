@@ -1,4 +1,4 @@
-//
+// Filename: Seat.h
 // Class stores information for seat
 //
 

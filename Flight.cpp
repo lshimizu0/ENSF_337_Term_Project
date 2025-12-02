@@ -1,3 +1,5 @@
+// Filename: Flight.cpp
+
 #include <iostream>
 #include "Flight.h"
 #include "Passenger.h"
@@ -27,9 +29,10 @@ Flight::Flight(string flight_id, string source, string dest, int number_of_rows,
 
 
 
-bool Flight::in_passengers(Passenger passenger) {
+
+bool Flight::in_passengers(int passenger_id) {
     for(int i=0; i <passengers.size();i++) {
-        if(passengers[i].get_id() == passenger.get_id()) {
+        if(passengers[i].get_id() == passenger_id) {
             return true;
         }
     }
@@ -37,19 +40,22 @@ bool Flight::in_passengers(Passenger passenger) {
 }
 
 void Flight::deletePassenger(int passenger_id) {
-    for(int i=0; i <passengers.size();i++) {
-        if(passengers[i].get_id() == passenger_id) {
-            passengers.erase(passengers.begin()+i);
+    if(in_passengers(passenger_id)) {
+        for(int i=0; i <passengers.size();i++) {
+            if(passengers[i].get_id() == passenger_id) {
+                passengers.erase(passengers.begin()+i);
+            }
         }
+    }else {
+        cout<<"Passenger does not exist"<<endl;
     }
+
 }
 void Flight::printSeatMap() {
 
     for(int i=0; i <number_of_rows; i++) {
         cout<<"+---+---+---+---+---+---+\n";
         for(int j = 0; j < number_of_seats_per_row; j++) {
-            // cout<<seats[i][j].get_seat_character();
-            // cout<<seats[i][j].get_row_number();
             if(seats[i][j].get_assigned()) {
                 cout<<"| x ";
             }else
